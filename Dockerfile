@@ -10,4 +10,4 @@ COPY murshop24_tg_bot murshop24_tg_bot
 
 EXPOSE 8080
 
-CMD [ "python", "murshop24_tg_bot" ]
+CMD [ "python", "-m", "murshop24_tg_bot" ]
