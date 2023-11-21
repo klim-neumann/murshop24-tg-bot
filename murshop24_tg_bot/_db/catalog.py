@@ -21,9 +21,7 @@ async def select_cities(session: sqla_asyncio.AsyncSession) -> Sequence[models.C
     return cities
 
 
-async def select_city(
-    session: sqla_asyncio.AsyncSession, id: int
-) -> models.City:
+async def select_city(session: sqla_asyncio.AsyncSession, id: int) -> models.City:
     stmt = sqla.select(models.City).where(models.City.id == id)
     city = await session.scalar(stmt)
     if city is None:
@@ -48,9 +46,7 @@ async def select_products(
     return products
 
 
-async def select_product(
-    session: sqla_asyncio.AsyncSession, id: int
-) -> models.Product:
+async def select_product(session: sqla_asyncio.AsyncSession, id: int) -> models.Product:
     stmt = sqla.select(models.Product).where(models.Product.id == id)
     product = await session.scalar(stmt)
     if product is None:
@@ -129,7 +125,7 @@ async def select_product_unit(
 async def select_bank_account(
     session: sqla_asyncio.AsyncSession,
 ) -> models.BankAccount:
-    stmt = sqla.select(models.BankAccount)
+    stmt = sqla.select(models.BankAccount).order_by(models.BankAccount.id.desc())
     bank_account = await session.scalar(stmt)
     if bank_account is None:
         raise _errors.TgBotError()
@@ -139,7 +135,9 @@ async def select_bank_account(
 async def select_qiwi_wallet_account(
     session: sqla_asyncio.AsyncSession,
 ) -> models.QiwiWalletAccount:
-    stmt = sqla.select(models.QiwiWalletAccount)
+    stmt = sqla.select(models.QiwiWalletAccount).order_by(
+        models.QiwiWalletAccount.id.desc()
+    )
     qiwi_wallet_account = await session.scalar(stmt)
     if qiwi_wallet_account is None:
         raise _errors.TgBotError()
