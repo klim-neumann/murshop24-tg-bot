@@ -13,7 +13,8 @@ async def select_tg_bot(
         .where(models.TgBot.tg_id == bot.id)
         .options(
             orm.selectinload(models.TgBot.tg_operator),
-            orm.selectinload(models.TgBot.tg_reviews_channel)
+            orm.selectinload(models.TgBot.tg_reviews_channel),
+            orm.selectinload(models.TgBot.tg_customer_group),
         )
     )
     return await session.scalar(stmt)

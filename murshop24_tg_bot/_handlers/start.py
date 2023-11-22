@@ -17,7 +17,9 @@ async def start(
         tg_bot = await db.select_tg_bot(session, bot)
     text = "<strong>Murshop24</strong> - быстрые клады."
     markup = markups.start(
-        tg_bot.tg_operator, tg_reviews_channel=tg_bot.tg_reviews_channel
+        tg_bot.tg_operator,
+        tg_reviews_channel=tg_bot.tg_reviews_channel,
+        tg_customer_group=tg_bot.tg_customer_group,
     )
     return text, markup
 

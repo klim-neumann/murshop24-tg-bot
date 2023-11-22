@@ -8,6 +8,7 @@ from murshop24_tg_bot import _consts
 def start(
     tg_operator: models.TgOperator,
     tg_reviews_channel: models.TgReviewsChannel | None = None,
+    tg_customer_group: models.TgCustomerGroup | None = None,
 ) -> types.InlineKeyboardMarkup:
     keyboard_builder = keyboard.InlineKeyboardBuilder()
     keyboard_builder.button(text="Каталог", callback_data=_consts.CallbackData.CATALOG)
@@ -21,5 +22,13 @@ def start(
     )
     if tg_reviews_channel is not None:
         keyboard_builder.button(text="Отзывы", url=tg_reviews_channel.invite_link)
-    keyboard_builder.adjust(1, 1, 2, 1 if tg_reviews_channel is None else 2)
+    if tg_customer_group is not None:
+        keyboard_builder.button(text="Наш чат", url=tg_customer_group.invite_link)
+    keyboard_builder.adjust(
+        1,
+        1,
+        2,
+        1 if tg_reviews_channel is None else 2,
+        0 if tg_customer_group is None else 1,
+    )
     return keyboard_builder.as_markup()

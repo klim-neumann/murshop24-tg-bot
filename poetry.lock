@@ -855,8 +855,8 @@ sqlalchemy = {version = "^2.0.23", extras = ["asyncio"]}
 [package.source]
 type = "git"
 url = "https://github.com/klim-neumann/murshop24-models.git"
-reference = "main"
-resolved_reference = "0c34e4bbb56f2c3a9787fa33b54ad8d4f4e0965f"
+reference = "HEAD"
+resolved_reference = "2b340b5bcfc4214d42a57291838ed3307c4b8644"
 
 [[package]]
 name = "mypy"
@@ -1535,4 +1535,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "de9e96cfb3daa39b09f5ee2cea84e3f2d31396d6f7076f14d60f2dabdac77a75"
+content-hash = "7936bef89f7090e5f9c858986214155e2eca71057648c2e0f5ccb17ea365984c"
