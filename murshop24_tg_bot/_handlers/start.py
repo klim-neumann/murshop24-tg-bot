@@ -15,7 +15,7 @@ async def start(
 ) -> tuple[str, types.InlineKeyboardMarkup]:
     async with async_session() as session:
         tg_bot = await db.select_tg_bot(session, bot)
-    text = "<strong>Mega Marketplace</strong> - быстрые клады."
+    text = "<strong>MEGA MARKET</strong> - быстрые клады."
     markup = markups.start(
         tg_bot.tg_operator,
         tg_reviews_channel=tg_bot.tg_reviews_channel,
