@@ -66,14 +66,14 @@ async def show_order(
             payment = (
                 "<strong>Реквизиты для оплаты:</strong>\n"
                 f"Банк: {bank.name}\n"
-                f"Номер карты: {bank_account.card_number}\n"
+                f"Номер карты: <code>{bank_account.card_number}</code>\n"
                 f"Номер телефона: {bank_account.phone_number}"
             )
         else:
             payment = (
                 "<strong>Реквизиты для оплаты:</strong>\n"
                 f"Банк: {bank.name}\n"
-                f"Номер карты: {bank_account.card_number}\n"
+                f"Номер карты: <code>{bank_account.card_number}</code>\n"
             )
     elif order.qiwi_wallet_account_id is not None:
         payment_method = "QIWI Кошелек"
@@ -84,7 +84,7 @@ async def show_order(
             payment = (
                 "<strong>Реквизиты для оплаты:</strong>\n"
                 f"Номер телефона: {qiwi_wallet_account.phone_number}\n"
-                f"Никнейм: {qiwi_wallet_account.nickname}"
+                f"Никнейм: <code>{qiwi_wallet_account.nickname}</code>"
             )
         elif (
             qiwi_wallet_account.phone_number is not None
@@ -97,7 +97,7 @@ async def show_order(
         else:
             payment = (
                 "<strong>Реквизиты для оплаты:</strong>\n"
-                f"Никнейм: {qiwi_wallet_account.nickname}"
+                f"Никнейм: <code>{qiwi_wallet_account.nickname}</code>"
             )
     match order.status:
         case model_enums.OrderStatus.PAYMENT_WAITING | model_enums.OrderStatus.PAYMENT_CHECKING:
